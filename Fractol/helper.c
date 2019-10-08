@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 21:35:34 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/10/07 18:39:35 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/08 16:36:09 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int				errors(int reason)
 {
 	if (reason == 0)
 	{
-		ft_putstr_fd("Not enough arguments.\n", 2);
+		ft_putstr_fd("Arguments error.\n", 2);
 		exit(0);
 	}
 	if (reason == 1)

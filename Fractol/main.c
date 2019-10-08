@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 14:51:01 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/10/07 15:19:55 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/08 16:35:26 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int				main(int ac, char **av)
 {
 	t_data	*data;
 
-	if (ac < 2)
+	if (ac != 2)
 		errors(0);
 	if (expected_fractal(av[1]))
 		errors(2);

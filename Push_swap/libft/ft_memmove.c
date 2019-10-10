@@ -3,30 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjory-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/20 16:55:57 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/08/20 16:55:59 by jjory-ca         ###   ########.fr       */
+/*   Created: 2018/11/23 18:59:56 by jjory-ca          #+#    #+#             */
+/*   Updated: 2019/01/16 16:42:41 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dest, const void *source, size_t n)
 {
-	unsigned char *s1;
-	unsigned char *s2;
+	char		*csrc;
+	char		*cdst;
+	size_t		i;
 
-	s1 = (unsigned char *)dst;
-	s2 = (unsigned char *)src;
-	if (s1 > s2)
+	if (source == dest)
+		return (dest);
+	csrc = (char *)source;
+	cdst = (char *)dest;
+	if (source < dest)
 	{
-		s1 += len;
-		s2 += len;
-		while (len--)
-			*--s1 = *--s2;
+		i = n;
+		while (i-- > 0)
+			cdst[i] = csrc[i];
 	}
 	else
-		ft_memcpy(dst, src, len);
-	return (dst);
+	{
+		i = 0;
+		while (i < n)
+		{
+			cdst[i] = csrc[i];
+			i++;
+		}
+	}
+	return (dest);
 }

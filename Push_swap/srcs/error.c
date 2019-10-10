@@ -6,11 +6,11 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 18:40:21 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/08/19 18:40:23 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/10 20:58:16 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 static int	error_duplicate(int *nbrs, int ac)
 {

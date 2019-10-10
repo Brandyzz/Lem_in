@@ -5,29 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/19 18:41:35 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/08/19 18:41:36 by jjory-ca         ###   ########.fr       */
+/*   Created: 2019/02/11 18:42:37 by jjory-ca          #+#    #+#             */
+/*   Updated: 2019/10/10 20:59:14 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# include "../libft/libft.h"
-# include <stdlib.h>
+# define BUFF_SIZE 7
+# include <fcntl.h>
 # include <unistd.h>
-# define BUFF_SIZE 3
+# include <stdlib.h>
+# include <stdio.h>
+# include "../libft/libft.h"
 
-typedef struct		s_llst
-{
-	void			*content;
-	size_t			content_size;
-	struct s_llst	*next;
-	int				fd;
-}					t_gnl;
-
-int					get_next_line(int const fd, char **line);
-int					gnl_build(int fd, char *buf, t_gnl **head);
-t_gnl				*gnl_search(int fd, t_gnl **head);
-char				*gnl_trim(int fd, t_gnl **head);
+int		ft_newline(char **i, char **line, int fd, int ret);
+int		get_next_line(const int fd, char **line);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 18:41:17 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/08/20 16:49:32 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/10 21:13:33 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	stack_push(void *stack_a, void *stack_b, int sens)
 	if (sa->stack->top != -1)
 		sb->stack->nb[sb->stack->top++ + 1] = sa->stack->nb[sa->stack->top--];
 	if (sens >= 0)
-		(sens == 1) ? cmd_join(&sa->op, "pb\n") : cmd_join(&sb->op, "pa\n");
+		(sens == 1) ? cmd_join(sa, "pb\n") : cmd_join(sb, "pa\n");
 }
 
 static void	stack_rotate(void *stack)

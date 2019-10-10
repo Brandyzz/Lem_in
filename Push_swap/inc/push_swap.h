@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 18:41:30 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/08/20 16:02:18 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/10 21:13:49 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ int				check_median(t_stack *stack, int med, int nb, int sens);
 int				check_med(t_stack *stack_a, int nbelem);
 void			cmd_add_right(t_stack *stack, int cmd);
 void			cmd_add_left(t_stack *stack, int cmd);
-void			cmd_join(char **op, char *cmd);
+void			cmd_join(t_stack *stack, char *cmd);
 void			cmd_print(t_stack *stack);
 int				error_nbr(int ac, char **av);
 int				error_instr(char *instr);
 int				error_case(char **av);
-void			clean_stack(t_stack **stack);
+void			clean_stack(t_stack *stack);
 
 #endif

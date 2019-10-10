@@ -5,60 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/20 16:54:34 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/08/20 16:54:35 by jjory-ca         ###   ########.fr       */
+/*   Created: 2018/12/12 17:59:41 by jjory-ca          #+#    #+#             */
+/*   Updated: 2019/10/07 18:34:03 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	n_length(int n)
+char	*ft_itoa(int n)
 {
-	size_t	len;
+	char	ret[11];
+	char	*r;
+	int		neg;
+	int		i;
+	int		j;
 
-	if (n == 0)
-		return (1);
-	len = 0;
-	while (n != 0)
+	j = 0;
+	i = 0;
+	neg = n < 0 ? -1 : 1;
+	while (neg * n > 9 || neg * n < 0)
 	{
-		n /= 10;
-		len++;
+		ret[i++] = '0' + neg * (n % 10);
+		n = n / 10;
 	}
-	return (len);
-}
-
-static	int	n_sign(int n)
-{
-	if (n < 0)
-		return (1);
-	return (0);
-}
-
-char		*ft_itoa(int n)
-{
-	char	*ret;
-	int		sign;
-	int		len;
-
-	sign = n_sign(n);
-	len = n_length(n);
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (!(ret = (char *)malloc(sizeof(char) * (len + sign + 1))))
+	ret[i++] = '0' + neg * n;
+	if (neg < 0)
+		ret[i++] = '-';
+	if ((r = (char *)malloc(sizeof(char) * i)) == NULL)
 		return (NULL);
-	else
-	{
-		ret = ret + len + sign;
-		*ret = '\0';
-		if (!n)
-			*--ret = '0';
-		while (n != 0)
-		{
-			*--ret = ABS(n % 10) + '0';
-			n = n / 10;
-		}
-		if (sign)
-			*--ret = '-';
-	}
-	return (ret);
+	r[i] = '\0';
+	while (i--)
+		r[i] = ret[j++];
+	return (r);
 }

@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   strcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjory-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/20 16:56:52 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/08/20 16:56:54 by jjory-ca         ###   ########.fr       */
+/*   Created: 2018/11/23 16:52:44 by jjory-ca          #+#    #+#             */
+/*   Updated: 2018/12/20 20:15:43 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+char	*ft_strcpy(char *s1, const char *s2)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (src[i] != '\0')
+	while (s2[i] != '\0')
 	{
-		dst[i] = src[i];
+		s1[i] = s2[i];
 		i++;
+		s1[i] = '\0';
 	}
-	dst[i] = '\0';
-	return (dst);
+	s1[i] = '\0';
+	return (s1);
 }

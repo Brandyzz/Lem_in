@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 18:41:12 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/08/20 16:48:07 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/10 21:13:18 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,12 @@ static void	solve_end(t_stack *stack_a, t_stack *stack_b)
 			else if (get_max(stack_b) == stack_b->stack->nb[stack_b->stack->top - 1])
 			{
 				stack_b->swap(stack_b);
-				cmd_join(&stack_a->op, "sb\n");
+				cmd_join(stack_a, "sb\n");
 			}
 			else
 			{
 				stack_b->rot(stack_b);
-				cmd_join(&stack_a->op, "rb\n");
+				cmd_join(stack_a, "rb\n");
 			}
 		}
 	}

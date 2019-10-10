@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 18:40:03 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/08/20 16:03:45 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/10 20:13:23 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int			main(int ac, char **av)
 		stack_a = stack_construct(av, ac);
 		stack_b = stack_construct(NULL, ac);
 		checker(stack_a, stack_b);
-		clean_stack(&stack_a);
-		clean_stack(&stack_b);
+		clean_stack(stack_a);
+		clean_stack(stack_b);
 	}
 	return (0);
 }

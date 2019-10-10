@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 18:40:55 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/08/20 16:07:12 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/10 21:12:47 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,19 @@ void	solve_order_reverse(t_stack *stack_a, t_stack *stack_b)
 		if (stack_a->stack->top == 1)
 		{
 			stack_a->swap(stack_a);
-			cmd_join(&stack_a->op, "sa\n");
+			cmd_join(stack_a, "sa\n");
 		}
 		else
 		{
 			while (stack_a->stack->top > 2)
 			{
 				stack_a->rev(stack_a);
-				cmd_join(&stack_a->op, "rra\n");
+				cmd_join(stack_a, "rra\n");
 				stack_a->push(stack_a, stack_b, 1);
 			}
 			stack_a->swap(stack_a);
 			stack_a->rev(stack_a);
-			cmd_join(&stack_a->op, "sa\nrra\n");
+			cmd_join(stack_a, "sa\nrra\n");
 			while (stack_b->stack->top != -1)
 				stack_a->push(stack_b, stack_a, 0);
 		}

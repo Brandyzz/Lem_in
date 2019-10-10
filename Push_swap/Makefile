@@ -6,7 +6,7 @@
 #    By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/07 09:32:29 by nhuber            #+#    #+#              #
-#    Updated: 2019/08/20 16:51:48 by jjory-ca         ###   ########.fr        #
+#    Updated: 2019/10/10 20:09:19 by jjory-ca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ FILES = $(F_DIR)/cmd.c \
 		$(F_DIR)/stack.c \
 		$(F_DIR)/get_next_line.c \
 		$(F_DIR)/order.c \
-		$(F_DIR)/info.c \
 		$(F_DIR)/clean.c
 CHECKER = $(FILES) $(F_DIR)/checker.c
 PUSH_SWAP = $(FILES) $(F_DIR)/push_swap.c 

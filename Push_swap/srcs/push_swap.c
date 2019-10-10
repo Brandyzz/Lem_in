@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 18:41:00 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/08/20 16:07:40 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/10 20:58:43 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	push_swap(int ac, char **av)
 		quick_left(stack_a, stack_b, TOP_A + 1));
 		cmd_print(stack_a);
 	}
-	clean_stack(&stack_a);
-	clean_stack(&stack_b);
+	clean_stack(stack_a);
+	clean_stack(stack_b); 
 }
 
 int			main(int ac, char **av)

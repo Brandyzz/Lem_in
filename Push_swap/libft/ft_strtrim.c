@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjory-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/20 16:58:17 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/08/20 16:58:19 by jjory-ca         ###   ########.fr       */
+/*   Created: 2018/12/12 16:42:06 by jjory-ca          #+#    #+#             */
+/*   Updated: 2018/12/20 20:45:13 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,21 @@
 
 char	*ft_strtrim(char const *s)
 {
-	char			*trim;
-	unsigned int	i;
-	unsigned int	j;
-	size_t			len;
+	unsigned int	start;
+	unsigned int	end;
 
+	start = 0;
 	if (!s)
 		return (NULL);
-	i = 0;
-	j = 0;
-	len = ft_strlen(s);
-	while (s[i] == '\t' || s[i] == ' ' || s[i] == '\n')
-		i++;
-	if (i == len)
-		return ("");
-	while (s[len - 1] == '\t' || s[len - 1] == ' ' || s[len - 1] == '\n')
-		len--;
-	if ((trim = ft_strnew(len - i)) == NULL)
-		return (NULL);
-	while (s[i] && i < len)
-		trim[j++] = s[i++];
-	trim[j] = '\0';
-	return (trim);
+	while (s[start] == ' ' || s[start] == '\n' || s[start] == '\t')
+		start++;
+	if (s[start] == '\0')
+		return (ft_strnew(0));
+	end = start;
+	while (s[end] != '\0')
+		end++;
+	end--;
+	while (s[end] == ' ' || s[end] == '\n' || s[end] == '\t')
+		end--;
+	return (ft_strsub(s, start, end - start + 1));
 }

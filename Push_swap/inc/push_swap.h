@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 18:41:30 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/10/11 17:44:56 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/11 18:54:07 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ typedef struct	s_stack
 	void		(*rev)(void *);
 	char		*op;
 	t_point		*point;
+	int			vis;
 }				t_stack;
 
 int				order_reverse(t_stack *stack);
-t_stack			*stack_construct(char **param, int top);
-t_point			*point_construct(char **param, int top);
+t_stack			*stack_construct(char **av, int top);
+t_point			*point_construct(char **av, int top);
 int				solve_order(t_stack *stack);
 void			solve_reverse(t_stack *stack_a, t_stack *stack_b);
 void			solve_stack(t_stack *stack_a, t_stack *stack_b);

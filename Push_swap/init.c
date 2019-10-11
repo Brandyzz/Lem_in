@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 18:41:17 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/10/11 17:56:04 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/11 18:53:18 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static void	stack_reverse(void *stack)
 	}
 }
 
-t_stack		*stack_construct(char **param, int top)
+t_stack		*stack_construct(char **av, int top)
 {
 	t_stack	*stack;
 
@@ -94,7 +94,7 @@ t_stack		*stack_construct(char **param, int top)
 		stack->rot = &stack_rotate;
 		stack->rev = &stack_reverse;
 		stack->op = NULL;
-		stack->point = point_construct(param, top);
+		stack->point = point_construct(av, top);
 	}
 	return (stack);
 }

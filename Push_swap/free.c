@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error2.c                                           :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/19 18:40:25 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/10/10 20:58:22 by jjory-ca         ###   ########.fr       */
+/*   Created: 2019/08/19 18:40:12 by jjory-ca          #+#    #+#             */
+/*   Updated: 2019/10/11 17:51:04 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "inc/push_swap.h"
 
-int		error_case(char **av)
+void		free_all(t_stack *stack)
 {
-	int	i;
-
-	i = 0;
-	while (av[i])
+	if (stack->point->num)
 	{
-		if (av[i][0] == '-' && (av[i][1] == '\0' || av[i][1] == '0'))
-			return (1);
-		i++;
+		free(stack->point->num);
+		stack->point->num = NULL;
 	}
-	return (0);
+	if (stack->point)
+	{
+		free(stack->point);
+		stack->point = NULL;
+	}
+	if (stack->op)
+	{
+		free(stack->op);
+		stack->op = NULL;
+	}
+	if (stack)
+	{
+		free(stack);
+		stack = NULL;
+	}
 }

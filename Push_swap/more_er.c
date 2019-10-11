@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   more_er.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/19 18:40:12 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/10/10 20:58:10 by jjory-ca         ###   ########.fr       */
+/*   Created: 2019/08/19 18:40:25 by jjory-ca          #+#    #+#             */
+/*   Updated: 2019/10/11 17:50:51 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "inc/push_swap.h"
 
-void		clean_stack(t_stack *stack)
+int		error_case(char **av)
 {
-	if (stack->stack->nb)
+	int	i;
+
+	i = 0;
+	while (av[i])
 	{
-		free(stack->stack->nb);
-		stack->stack->nb = NULL;
+		if (av[i][0] == '-' && (av[i][1] == '\0' || av[i][1] == '0'))
+			return (1);
+		i++;
 	}
-	if (stack->stack)
-	{
-		free(stack->stack);
-		stack->stack = NULL;
-	}
-	if (stack->op)
-	{
-		free(stack->op);
-		stack->op = NULL;
-	}
-	if (stack)
-	{
-		free(stack);
-		stack = NULL;
-	}
+	return (0);
 }

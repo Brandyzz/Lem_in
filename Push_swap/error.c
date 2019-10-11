@@ -6,11 +6,11 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 18:40:21 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/10/10 20:58:16 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/11 17:51:05 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "inc/push_swap.h"
 
 static int	error_duplicate(int *nbrs, int ac)
 {
@@ -82,36 +82,36 @@ int			error_nbr(int ac, char **av)
 	er += error_case(av);
 	if (er != 0)
 	{
-		ft_putstr_fd("Error\n", STDERR_FILENO);
+		ft_putstr_fd("Error\n", 2);
 		er++;
 	}
 	return (er);
 }
 
-int			error_instr(char *instr)
+int			error_str(char *str)
 {
 	int	er;
 
 	er = 0;
-	if (instr == NULL)
+	if (str == NULL)
 		return (1);
-	if (ft_strlen(instr) == 2 && instr[0] == 's'
-				&& (instr[1] == 'a' || instr[1] == 'b'
-				|| instr[1] == 's'))
+	if (ft_strlen(str) == 2 && str[0] == 's'
+				&& (str[1] == 'a' || str[1] == 'b'
+				|| str[1] == 's'))
 		er++;
-	if (ft_strlen(instr) == 2 && instr[0] == 'p'
-				&& (instr[1] == 'a' || instr[1] == 'b'))
+	if (ft_strlen(str) == 2 && str[0] == 'p'
+				&& (str[1] == 'a' || str[1] == 'b'))
 		er++;
-	if (instr[0] == 'r')
+	if (str[0] == 'r')
 	{
-		if (ft_strlen(instr) == 2 &&
-				(instr[1] == 'a' || instr[1] == 'b' || instr[1] == 'r'))
+		if (ft_strlen(str) == 2 &&
+				(str[1] == 'a' || str[1] == 'b' || str[1] == 'r'))
 			er++;
-		if (ft_strlen(instr) == 3 && instr[1] == 'r' &&
-				(instr[1] == 'a' || instr[1] == 'b' || instr[1] == 'r'))
+		if (ft_strlen(str) == 3 && str[1] == 'r' &&
+				(str[1] == 'a' || str[1] == 'b' || str[1] == 'r'))
 			er++;
 	}
-	if (er == 0 && instr[0] != '\0')
-		ft_putstr_fd("Error\n", STDERR_FILENO);
+	if (er == 0 && str[0] != '\0')
+		ft_putstr_fd("Error\n", 2);
 	return (er);
 }

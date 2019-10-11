@@ -6,53 +6,63 @@
 #    By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/07 09:32:29 by nhuber            #+#    #+#              #
-#    Updated: 2019/10/10 20:09:19 by jjory-ca         ###   ########.fr        #
+#    Updated: 2019/10/11 17:50:15 by jjory-ca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+PUSH_SWAP = push_swap
+
+CHECKER = checker
+
 FLAGS = -Wall -Wextra -Werror
-NAME = push_swap
-NAME2 = checker
-H_DIR = inc
-F_DIR = srcs
-L_DIR = libft
-FILES = $(F_DIR)/cmd.c \
-		$(F_DIR)/check.c \
-		$(F_DIR)/error.c \
-		$(F_DIR)/error2.c \
-		$(F_DIR)/get.c \
-		$(F_DIR)/item.c \
-		$(F_DIR)/quick_left.c \
-		$(F_DIR)/quick_right.c \
-		$(F_DIR)/soft_solve.c \
-		$(F_DIR)/stack.c \
-		$(F_DIR)/get_next_line.c \
-		$(F_DIR)/order.c \
-		$(F_DIR)/clean.c
-CHECKER = $(FILES) $(F_DIR)/checker.c
-PUSH_SWAP = $(FILES) $(F_DIR)/push_swap.c 
-TMP = Makefile~ $(NAME2)~ $(NAME)~ $(FILES:.c=.c~)
+LIBA = -I libft/libft.h -L./libft -lft
 
-all : $(NAME) $(NAME2)
+SRC =   operations.c \
+		check_med.c \
+		error.c \
+		more_er.c \
+		get.c \
+		init_point.c \
+		do_left.c \
+		do_right.c \
+		solve.c \
+		init.c \
+		get_next_line.c \
+		more_solve.c \
+		free.c
 
-$(NAME) :
-	@cd $(L_DIR) && $(MAKE)
-	@$(CC) -o $(NAME) $(FLAGS) $(PUSH_SWAP) -I $(H_DIR) -L $(L_DIR) -lft
+OBJ = $(SRC:.c=.o)
 
-$(NAME2) :
-	@$(CC) -o $(NAME2) $(FLAGS) $(CHECKER) -I $(H_DIR) -L $(L_DIR) -lft
 
-clean :
-	@rm -f $(TMP) $(OBJ)
-	@cd $(L_DIR) && $(MAKE) $@
+all: $(PUSH_SWAP) $(CHECKER)
 
-fclean : clean
-	@rm -f $(NAME)
-	@rm -f $(NAME2)
-	@cd $(L_DIR) && $(MAKE) $@
-	@rm -f libft.a
+$(PUSH_SWAP): $(OBJ)
+	@echo ""
+	@echo "===========[ \x1b[31mP \x1b[32mS \x1b[37m]==========="
+	@echo ""
+	@echo "\x1b[31m > \x1b[32mCompilation PUSH_SWAP...\x1b[37m"
+	@make -C libft/
+	@echo ""
+	@echo "\x1b[31m > \033[1;35mLibft was built\033[0m"
+	@gcc $(FLAGS) -I libft/ -c $(SRC)
+	@gcc $(FLAGS) $(OBJ) push_swap.c -o $(PUSH_SWAP) $(LIBA)
 
-re : fclean all
+$(CHECKER):  $(OBJ)
+	@gcc $(FLAGS) $(OBJ) checker.c -o $(CHECKER) $(LIBA)
+	@echo ""
+	@echo "\x1b[31m > \033[1;32mProject was built\033[0m"
+	@rm *.o
+	@echo ""
+clean:
+	@rm -rf $(OBJ)
+	@make -C libft/ clean
+	@echo ""
+	@echo "\x1b[31m > \033[3;36mObjects cleaned\033[0m"
+	@echo ""
 
-.PHONY : all clean fclean re
+fclean: clean
+	@rm -rf $(PUSH_SWAP) $(CHECKER)
+	@make -C libft/ fclean
+	@echo "\x1b[31m > \033[3;31mProject fully cleaned\033[0m"
+
+re: fclean all

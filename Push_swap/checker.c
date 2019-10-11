@@ -6,52 +6,53 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 18:40:03 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/10/10 20:13:23 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/11 17:55:20 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "inc/push_swap.h"
 
-static void	do_instrr(char *instr, t_stack *sa, t_stack *sb)
+static void	do_more_str(char *str, t_stack *stack_a, t_stack *stack_b)
 {
-	if (ft_strlen(instr) == 2)
+	if (ft_strlen(str) == 2)
 	{
-		if (instr[1] == 'r')
+		if (str[1] == 'r')
 		{
-			sb->rot(sb);
-			sa->rot(sa);
+			stack_b->rot(stack_b);
+			stack_a->rot(stack_a);
 		}
 		else
-			instr[1] == 'b' ? sb->rot(sb) : sa->rot(sa);
+			str[1] == 'b' ? stack_b->rot(stack_b) : stack_a->rot(stack_a);
 	}
 	else
 	{
-		if (instr[2] == 'r')
+		if (str[2] == 'r')
 		{
-			sb->rev(sb);
-			sa->rev(sa);
+			stack_b->rev(stack_b);
+			stack_a->rev(stack_a);
 		}
 		else
-			instr[2] == 'b' ? sb->rev(sb) : sa->rev(sa);
+			str[2] == 'b' ? stack_b->rev(stack_b) : stack_a->rev(stack_a);
 	}
 }
 
-static void	do_instr(char *instr, t_stack *sa, t_stack *sb)
+static void	do_str(char *str, t_stack *stack_a, t_stack *stack_b)
 {
-	if (instr[0] == 'p')
-		instr[1] == 'b' ? sa->push(sa, sb, -1) : sa->push(sb, sa, -1);
-	if (instr[0] == 's')
+	if (str[0] == 'p')
+		str[1] == 'b' ? stack_a->push(stack_a, stack_b, -1) :
+		stack_a->push(stack_b, stack_a, -1);
+	if (str[0] == 's')
 	{
-		if (instr[1] == 's')
+		if (str[1] == 's')
 		{
-			sb->swap(sb);
-			sa->swap(sa);
+			stack_b->swap(stack_b);
+			stack_a->swap(stack_a);
 		}
 		else
-			instr[1] == 'b' ? sb->swap(sb) : sa->swap(sa);
+			str[1] == 'b' ? stack_b->swap(stack_b) : stack_a->swap(stack_a);
 	}
-	if (instr[0] == 'r')
-		do_instrr(instr, sa, sb);
+	if (str[0] == 'r')
+		do_more_str(str, stack_a, stack_b);
 }
 
 static int	checker(t_stack *stack_a, t_stack *stack_b)
@@ -59,15 +60,15 @@ static int	checker(t_stack *stack_a, t_stack *stack_b)
 	char	*buff;
 
 	buff = NULL;
-	while (get_next_line(STDIN_FILENO, &buff) > 0)
+	while (get_next_line(0, &buff) > 0)
 	{
-		if (error_instr(buff) == 0)
+		if (error_str(buff) == 0)
 		{
 			free(buff);
 			return (0);
 		}
 		else
-			do_instr(buff, stack_a, stack_b);
+			do_str(buff, stack_a, stack_b);
 		free(buff);
 	}
 	if (TOP_B == -1)
@@ -91,8 +92,8 @@ int			main(int ac, char **av)
 		stack_a = stack_construct(av, ac);
 		stack_b = stack_construct(NULL, ac);
 		checker(stack_a, stack_b);
-		clean_stack(stack_a);
-		clean_stack(stack_b);
+		free_all(stack_a);
+		free_all(stack_b);
 	}
 	return (0);
 }

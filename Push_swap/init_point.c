@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   item.c                                             :+:      :+:    :+:   */
+/*   init_point.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 18:40:47 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/08/19 18:40:49 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/11 17:50:55 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "inc/push_swap.h"
 
 static int	*item_nb(char **param, int top)
 {
@@ -34,13 +34,13 @@ static int	*item_nb(char **param, int top)
 	return (nb);
 }
 
-t_item		*item_construct(char **param, int top)
+t_point		*point_construct(char **param, int top)
 {
-	t_item	*new;
+	t_point	*new;
 
-	if ((new = (t_item *)ft_memalloc(sizeof(t_item))) != NULL)
+	if ((new = (t_point *)ft_memalloc(sizeof(t_point))) != NULL)
 	{
-		new->nb = item_nb(param, top);
+		new->num = item_nb(param, top);
 		new->top = (param == NULL ? -1 : --top);
 	}
 	return (new);

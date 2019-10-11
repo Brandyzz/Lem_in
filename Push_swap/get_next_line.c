@@ -6,11 +6,11 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 21:01:23 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/10/10 20:59:44 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/10/11 17:51:02 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/get_next_line.h"
+#include "inc/push_swap.h"
 
 int		ft_newline(char **i, char **line, int fd, int ret)
 {
